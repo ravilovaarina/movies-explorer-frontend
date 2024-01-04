@@ -1,0 +1,178 @@
+.aboutMe {
+    width: 100%;
+    background: #FFF;
+    color: #000;
+    display: flex;
+    justify-content: center;
+}
+
+.aboutMe__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 100px 70px;
+    gap: 60px;
+    max-width: 1140px;
+
+}
+
+.aboutMe__title {
+    margin: 10px 0 0 0;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 23px;
+}
+
+.aboutMe__my-picture {
+    width: 270px;
+    border-radius: 10px;
+}
+
+.aboutMe__me {
+    gap: 49px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutMe__name {
+    margin: 0;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: -2px;
+}
+
+.aboutMe__caption {
+    margin: 0;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.aboutMe__text {
+    margin: 8px 0 0 0;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.aboutMe__github-link {
+    margin: 81px 0 0 0;
+    text-decoration: none;
+    color: #000;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.aboutMe__me-info {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+@media screen and (max-width: 800px) {
+    .aboutMe__me-info {
+        gap: 16px;
+        max-width: 364px;
+    }
+
+    .aboutMe__text {
+        margin-top: 4px;
+    }
+
+    .aboutMe__github-link {
+        margin-top: 71px;
+    }
+
+    .aboutMe__container {
+        max-width: 668px;
+        margin: 50px 90px;
+    }
+
+    .aboutMe__title {
+        margin: 0;
+    }
+
+    .aboutMe__name {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .aboutMe__caption {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .aboutMe__text {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .aboutMe__my-picture {
+        height: 307px;
+        width: 255px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .aboutMe__me {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .aboutMe__container {
+        max-width: 292px;
+        margin: 70px 14px;
+        align-items: center;
+
+    }
+
+    .aboutMe__name {
+        font-size: 30px;
+        line-height: normal;
+    }
+
+    .aboutMe__caption {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 0;
+    }
+
+    .aboutMe__text {
+        margin: 0;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .aboutMe__me-info {
+        gap: 20px;
+        width: 292px;
+    }
+
+    .aboutMe__github-link {
+        margin-top: 20px;
+    }
+
+    .aboutMe__my-picture {
+        width: 292px;
+        height: 352px;
+    }
+
+    .aboutMe__title {
+        width: 100%;
+    }
+}

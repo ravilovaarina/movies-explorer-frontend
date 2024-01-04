@@ -1,0 +1,147 @@
+.signup {
+    color: black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup__container {
+    width: 100%;
+    margin: 148px auto 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 396px;
+}
+
+.signup__logo {
+    width: 38px;
+    height: 38px;
+}
+
+.signup__greeting {
+    width: 100%;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+}
+
+.signup__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.signup__label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.signup__label-text {
+    color: #A0A0A0;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.signup__input {
+    width: 100%;
+    border-radius: 8px;
+    background-color: #F9F9F9;
+    padding: 15px;
+    box-sizing: border-box;
+    border: none;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.signup__error {
+    color: #EE3465;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.signup__submit {
+    width: 100%;
+    margin-top: 49px;
+    border-radius: 3px;
+    background-color: #FF6838;
+    padding: 15px 0;
+    box-sizing: border-box;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+}
+
+.signup__input_error {
+    color: #EE3465;
+}
+
+.signup__text {
+    text-align: center;
+    color: #A0A0A0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.signup__link {
+    color: #FF6838;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+    .signup {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .signup__container {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .signup__container {
+        margin: 56px auto 30px;
+        max-width: 260px;
+        gap: 40px;
+    }
+
+    .signup__form {
+        margin-top: 30px;
+    }
+
+    .signup__greeting {
+        text-align: center;
+    }
+
+    .signup__logo {
+        align-self: center;
+    }
+
+    .signup__submit {
+        margin-top: 137px;
+    }
+}

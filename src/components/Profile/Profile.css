@@ -1,0 +1,174 @@
+.profile {
+    color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile__form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    width: 410px;
+    margin: 74px auto 220px;
+}
+
+.profile__greeting {
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.profile__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.profile__lable:first-child {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E8E8E8;
+    ;
+}
+
+.profile__error {
+    color: #FF004C;
+    text-align: center;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    bottom: 65px;
+}
+
+.profile__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 0 70;
+}
+
+.profile__lable {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.profile__input {
+    background-color: #FFF;
+    border: none;
+    color: var(--Content-contentPrimary, #000);
+    text-align: right;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+}
+
+.profile__input-text {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.profile__button {
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: all 0.3s ease;
+}
+
+.profile__button-signout {
+    color: #EE3465;
+}
+
+.profile__button-edit:hover {
+    opacity: 0.7;
+}
+
+.profile__button-edit_disabled {
+    color: #8b8b8b;
+    cursor: default;
+}
+
+.profile__button-edit_disabled:hover {
+    opacity: 0.7;
+}
+
+.profile__buttons_status_being-edited {
+    display: none;
+}
+
+.profile__save-bttn_hidden {
+    display: none;
+}
+
+.profile__save-bttn_shown {
+    width: 100%;
+    border: none;
+    background: #3456F3;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 116px;
+    padding: 13px 0 15px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+    color:#FFF;
+}
+
+.profile__save-bttn_valid:hover{
+    opacity: 0.7;
+}
+
+.profile__save-bttn_invalid{
+    background-color: #F8F8F8;
+    color: #C2C2C2;
+}
+
+@media screen and (max-width: 800px) {
+    .profile__form {
+        gap: 96px;
+        margin: 236px auto 210px;
+    }
+
+    .profile__buttons {
+        margin: 0 0 269px;
+    }
+
+    .profile__save-bttn_shown{
+        margin-top: 162px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .profile__form {
+        width: 260px;
+        gap: 80px;
+        margin: 70px auto 379px;
+    }
+
+    .profile__buttons {
+        margin: 0 0 40px;
+    }
+    .profile__save-bttn_shown{
+        margin-top: 331px;
+    }
+}
