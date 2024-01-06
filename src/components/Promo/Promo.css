@@ -17,9 +17,9 @@
 }
 
 .promo__about-project {
+    max-width: 640px;
     display: flex;
     flex-direction: column;
-    max-width: 640px;
     gap: 36px;
 }
 
@@ -56,10 +56,11 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-    max-width: 89px;
     text-align: center;
     transition: all .1s ease;
     margin-top: 110px;
+    background-color: transparent;
+    max-width: 129px;
 }
 
 .promo__more:hover {
@@ -110,10 +111,17 @@
         line-height: 38px;
         letter-spacing: -1.2px;
     }
+
     .promo__about-project {
         gap: 24px;
     }
+
     .promo__more {
         margin-top: 56px;
+    }
+
+    .promo__logo {
+        width: 210.001px;
+        height: 206px;
     }
 }

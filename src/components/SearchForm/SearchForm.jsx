@@ -15,8 +15,8 @@ export default function SearchForm() {
                             required
                         />
                         <button className="search__button" type="submit"></button>
+                        <FilterCheckbox/>
                     </form>
-                    <FilterCheckbox/>
                 </div>
             </section>
         </>

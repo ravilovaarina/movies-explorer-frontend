@@ -2,8 +2,8 @@
   display: none;
   border: unset;
   padding: 0;
-  width: 40px;
-  height: 43px;
+  width: 44px;
+  height: 44px;
   cursor: pointer;
   transition: opacity .3s ease;
   background-color: transparent;
@@ -36,5 +36,7 @@
 @media screen and (max-width: 800px) {
   .hamburger-button {
     display: flex;
+    width: 40px;
+    height: 43px;
   }
 }

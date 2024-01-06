@@ -8,16 +8,16 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Portfolio from "../Portfolio/Portfolio";
 
-const Main = ({isBurgerOpened, loggedIn, onClickBurger}) => {
+const Main = ({ isBurgerOpened, loggedIn, onClickBurger, aboutProjectRef }) => {
   return (
     <>
-      <Header themePurple={true} loggedIn={loggedIn} isBurgerOpened={isBurgerOpened} onClickBurger={onClickBurger}/>
+      <Header themePurple={true} loggedIn={loggedIn} isBurgerOpened={isBurgerOpened} onClickBurger={onClickBurger} />
       <main className="main">
-        <Promo />
-        <AboutProject />
+        <Promo aboutProjectRef={aboutProjectRef}/>
+        <AboutProject aboutProjectRef={aboutProjectRef}/>
         <Techs />
         <AboutMe />
-        <Portfolio/>
+        <Portfolio />
       </main>
       <Footer />
     </>

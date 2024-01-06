@@ -1,10 +1,9 @@
 .app {
+  width: 100%;
   box-sizing: border-box;
   min-height: 100vh;
   padding: 0;
-  margin: 0;
   min-width: 320px;
-  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -19,3 +18,4 @@
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
 }
+

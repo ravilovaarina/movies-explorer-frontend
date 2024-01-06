@@ -1,6 +1,6 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
 import Main from '../Main/Main.jsx';
 import Movies from '../Movies/Movies.jsx';
 import moviesData from '../../utils/movies.js';
@@ -14,7 +14,13 @@ function App() {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false)
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
-
+  const aboutProjectRef = useRef(null);
+  const navigate = useNavigate(
+    
+  )
+  function handleGoBackClick(){
+    navigate(-1);
+  }
   function onClickBurger(isBurgerOpened) {
     setIsBurgerOpened(!isBurgerOpened);
   }
@@ -40,6 +46,7 @@ function App() {
               isBurgerOpened={isBurgerOpened}
               loggedIn={false}
               onClickBurger={onClickBurger}
+              aboutProjectRef={aboutProjectRef}
             />}
         />
         <Route
@@ -82,7 +89,7 @@ function App() {
           element={<Login />} />
         <Route
           path='/*'
-          element={<NotFound />} />
+          element={<NotFound onGoBackClick={handleGoBackClick}/>} />
       </Routes>
     </div>
   );

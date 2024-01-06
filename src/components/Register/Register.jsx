@@ -33,10 +33,11 @@ export default function Register() {
                                 className={`signup__input ${errors.email && 'signup__input_error'}`}
                                 onChange={handleChange}
                                 required
+                                placeholder='Имя'
                                 minLength='2'
                                 maxLength='30'
                             />
-                            <span className="signup__error">{errors.name || ''}</span>
+                            <span className="signup__error">{errors.name || ' '}</span>
                         </label>
                         <label className="signup__label">
                             <span className="signup__label-text">E-mail</span>
@@ -47,8 +48,9 @@ export default function Register() {
                                 onChange={handleChange}
                                 value={values.email || ''}
                                 required
+                                placeholder='Почта'
                             />
-                            <span className="signup__error">{errors.email || ''}</span>
+                            <span className="signup__error">{errors.email || ' '}</span>
                         </label>
                         <label className="signup__label">
                             <span className="signup__label-text">Пароль</span>
@@ -59,16 +61,18 @@ export default function Register() {
                                 onChange={handleChange}
                                 value={values.password || ''}
                                 required
+                                placeholder='Пароль'
                             />
-                            <span className="signup__error">{errors.password || ''}</span>
+                            <span className="signup__error">{errors.password || ' '}</span>
                         </label>
                         <button
+                            type='submit'
                             className="signup__submit"
                             disabled={!isValid}
                         >Зарегистрироваться</button>
                         <span className="signup__text">
                             Уже зарегистрированы?&nbsp;
-                            <Link to='/signin' className='signup__link'>Войти</Link>
+                            <Link to='/signin' className='signup__link'> Войти</Link>
                         </span>
                     </form>
                 </div>

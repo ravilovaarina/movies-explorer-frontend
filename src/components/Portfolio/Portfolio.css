@@ -2,11 +2,14 @@
     background: #FFF;
     color: black;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .portfolio__container {
     margin: 0 70px 125px;
     max-width: 1280px;
+    width: 100%;
     display: flex;
     gap: 50px;
     flex-direction: column;
@@ -96,7 +99,6 @@
     }
     .portfolio__container {
         margin: 0 14px 70px;
-        max-width: 292px;
         gap: 40px;
     }
     .portfolio__title{
@@ -106,5 +108,9 @@
     .portfolio__link{
         font-size: 18px;
         line-height: 28px
+    }
+    .portfolio__link::after{
+        width: 11px;
+        height: 11px;
     }
 }

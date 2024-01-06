@@ -10,7 +10,7 @@ export default function Header({themePurple, loggedIn, isBurgerOpened, onClickBu
                 <Link to="/" className="header__link">
                     <img src={logo} alt="Логотип" />
                 </Link>
-                <Navigation loggedIn={loggedIn} onClickBurger={onClickBurger} isBurgerOpened={isBurgerOpened} themePurple={themePurple}/>
+                <Navigation loggedIn={!false} onClickBurger={onClickBurger} isBurgerOpened={isBurgerOpened} themePurple={themePurple}/>
             </div>
         </header>
     )

@@ -1,14 +1,17 @@
 .signin {
     color: black;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 0 30px;
+    box-sizing: border-box;
 }
 
 .signin__container {
     width: 100%;
-    margin: 148px auto 70px;
+    margin: 70px auto;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -40,7 +43,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    position: relative;
 }
 
 .signin__label-text {
@@ -49,6 +52,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin-bottom: 10px;
 }
 
 .signin__input {
@@ -70,6 +74,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    position: absolute;
+    bottom: -25px;
+    left: 0;
 }
 
 .signin__submit {
@@ -86,6 +93,12 @@
     font-weight: 500;
     line-height: normal;
     border: none;
+    transition: all .3s ease;
+}
+
+.signin__submit:hover{
+    cursor: pointer;
+    opacity: 0.8;
 }
 
 .signin__input_error {
@@ -93,6 +106,7 @@
 }
 
 .signin__text {
+    margin-top: -4px;
     text-align: center;
     color: #A0A0A0;
     font-size: 14px;
@@ -109,6 +123,11 @@
     font-weight: 400;
     line-height: normal;
     text-decoration: none;
+    transition: all .3s ease;
+}
+
+.signin__link:hover{
+    opacity: 0.7;
 }
 
 @media screen and (max-width: 800px) {
@@ -126,7 +145,7 @@
     .signin__container {
         margin: 56px auto 30px;
         max-width: 260px;
-        gap: 40px;
+        gap: 50px;
     }
 
     .signin__form {
@@ -142,6 +161,12 @@
     }
 
     .signin__submit {
-        margin-top: 147px;
+        margin-top: 247px;
+    }
+    .signin__text{
+        font-size: 12px;
+    }
+    .signin__link{
+        font-size: 12px;
     }
 }

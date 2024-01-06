@@ -1,14 +1,17 @@
 .signup {
     color: black;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 0 30px;
+    box-sizing: border-box;
 }
 
 .signup__container {
     width: 100%;
-    margin: 148px auto 70px;
+    margin: 70px auto;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -40,7 +43,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    position: relative;
 }
 
 .signup__label-text {
@@ -49,6 +52,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin-bottom: 10px;
 }
 
 .signup__input {
@@ -70,11 +74,14 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    position: absolute;
+    bottom: -25px;
+    left: 0;
 }
 
 .signup__submit {
     width: 100%;
-    margin-top: 49px;
+    margin-top: 71px;
     border-radius: 3px;
     background-color: #FF6838;
     padding: 15px 0;
@@ -86,6 +93,12 @@
     font-weight: 500;
     line-height: normal;
     border: none;
+    transition: all .3s ease;
+}
+
+.signup__submit:hover{
+    cursor: pointer;
+    opacity: 0.8;
 }
 
 .signup__input_error {
@@ -109,6 +122,11 @@
     font-weight: 400;
     line-height: normal;
     text-decoration: none;
+    transition: all .3s ease;
+}
+
+.signup__link:hover{
+    opacity: 0.7;
 }
 
 @media screen and (max-width: 800px) {
@@ -120,13 +138,17 @@
     .signup__container {
         margin: 0;
     }
+
+    .signup__text{
+        margin-top: -4px;
+    }
 }
 
 @media screen and (max-width: 400px) {
     .signup__container {
         margin: 56px auto 30px;
         max-width: 260px;
-        gap: 40px;
+        gap: 50px;
     }
 
     .signup__form {
@@ -142,6 +164,14 @@
     }
 
     .signup__submit {
-        margin-top: 137px;
+        margin-top: 159px;
+    }
+
+    .signup__text{
+        font-size: 12px;
+    }
+
+    .signup__link{
+        font-size: 12px;
     }
 }

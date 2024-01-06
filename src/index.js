@@ -1,4 +1,5 @@
 import './vendor/normalize.css'
+import './vendor/fonts/inter.css'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';

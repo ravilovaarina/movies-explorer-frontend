@@ -4,7 +4,9 @@ import './Navigation.css'
 
 export default function Navigation({ loggedIn, onClickBurger, isBurgerOpened, themePurple }) {
     const navigationLink = `navigation__link_theme_${themePurple ? 'purple' : 'white'}`
+    const navigationLinkBurger = `navigation__link_place_${isBurgerOpened && 'burger'}`
     const activeLink = `navigation__link_active_${isBurgerOpened ? 'mobile' : 'desktop'}`
+    const accountLink = `navigation__link_type_account_${themePurple && 'green'}`
     return (
         <>
             {!loggedIn ? (
@@ -22,7 +24,7 @@ export default function Navigation({ loggedIn, onClickBurger, isBurgerOpened, th
                             {isBurgerOpened && (
                                 <li className="navigation__link-item">
                                     <NavLink exact to="/" className={({ isActive }) =>
-                                        isActive ? `navigation__link ${navigationLink} ${activeLink}` : `navigation__link ${navigationLink}`}>
+                                        isActive ? `navigation__link ${navigationLink} ${activeLink} ${navigationLinkBurger}` : `navigation__link ${navigationLink} ${navigationLinkBurger}`}>
                                         Главная
                                     </NavLink>
                                 </li>
@@ -30,16 +32,16 @@ export default function Navigation({ loggedIn, onClickBurger, isBurgerOpened, th
                             <li className="navigation__link-item">
                                 <NavLink to="/movies" className={({ isActive }) =>
                                     isActive ?
-                                        `navigation__link ${navigationLink} ${activeLink}` :
-                                        `navigation__link ${navigationLink}`}>
+                                        `navigation__link ${navigationLink} ${activeLink} ${navigationLinkBurger}` :
+                                        `navigation__link ${navigationLink} ${navigationLinkBurger}`}>
                                     Фильмы
                                 </NavLink>
                             </li>
                             <li className="navigation__link-item">
                                 <NavLink to="/saved-movies" className={({ isActive }) =>
                                     isActive ?
-                                        `navigation__link ${navigationLink} ${activeLink}` :
-                                        `navigation__link ${navigationLink}`}>
+                                        `navigation__link ${navigationLink} ${navigationLinkBurger} ${activeLink}` :
+                                        `navigation__link ${navigationLink} ${navigationLinkBurger}`}>
                                     Сохранённые фильмы
                                 </NavLink>
                             </li>
@@ -48,8 +50,8 @@ export default function Navigation({ loggedIn, onClickBurger, isBurgerOpened, th
                             <li className="navigation__link-item">
                                 <NavLink to="/profile" className={({ isActive }) =>
                                     isActive ?
-                                        `navigation__link navigation__link_type_account ${navigationLink} ${activeLink}`
-                                        : `navigation__link navigation__link_type_account ${navigationLink}`}>
+                                        `navigation__link navigation__link_type_account ${navigationLinkBurger} ${accountLink} ${navigationLink} ${activeLink}`
+                                        : `navigation__link navigation__link_type_account ${navigationLinkBurger} ${accountLink} ${navigationLink}`}>
                                     Аккаунт
                                 </NavLink>
                             </li>

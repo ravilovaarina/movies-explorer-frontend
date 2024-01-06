@@ -10,7 +10,7 @@ export default function MoviesCard({ card }) {
         setIsCardSaved(!isCardSaved)
     }
     return (
-        <div className="card">
+        <li className="card">
             <div className="card__container">
                 <div className="card__description">
                     <h2 className="card__title">{card.title}</h2>
@@ -26,8 +26,8 @@ export default function MoviesCard({ card }) {
                         <button className="card__save-button card__save-button_type_unsave"></button>
                     )}
                 </div>
-                <img src={card.poster} alt="" className="card__image" />
+                <img src={card.poster} alt="Постер фильма" className="card__image" />
             </div>
-        </div>
+        </li>
     )
 }
