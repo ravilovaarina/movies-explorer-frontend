@@ -62,8 +62,8 @@ export default function Profile({ isBurgerOpened, loggedIn, onClickBurger }) {
                         </label>
                     </div>
                     <button className={`
-                        ${isBeingEdited ? 'profile__save-bttn_shown' : 'profile__save-bttn_hidden'}
-                        ${isValid ? 'profile__save-bttn_valid' : 'profile__save-bttn_invalid'}`}
+                        ${isBeingEdited ? 'profile__save-bttn profile__save-bttn_shown' : 'profile__save-bttn profile__save-bttn_hidden'}
+                        ${isValid ? 'profile__save-bttn profile__save-bttn_valid' : 'profile__save-bttn profile__save-bttn_invalid'}`}
                         disabled={isValid ? false : true}
                     >Сохранить
                     </button>

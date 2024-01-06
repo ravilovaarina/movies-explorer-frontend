@@ -59,9 +59,10 @@
     top: 0;
     right: 0;
     transition: all .3s ease;
+    cursor: pointer;
 }
 
-.search__button:hover{
+.search__button:hover {
     opacity: 0.8;
 }
 
@@ -72,6 +73,10 @@
 }
 
 @media screen and (max-width: 400px) {
+    .search__button {
+        top: -10%;
+    }
+
     .search__form::before {
         visibility: hidden;
     }
@@ -84,6 +89,6 @@
     }
 
     .search__container {
-        margin: 98px 14px 51px;
+        margin: 98px 14px 50px;
     }
 }

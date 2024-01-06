@@ -99,6 +99,7 @@
     font-weight: 500;
     line-height: normal;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .profile__button-signout {
@@ -141,6 +142,10 @@
     transition: all 0.3s ease;
     border-radius: 3px;
     color: #FFF;
+}
+
+.profile__save-bttn_valid {
+    cursor: pointer;
 }
 
 .profile__save-bttn_valid:hover {

@@ -17,7 +17,7 @@ export default function Login() {
 
     return (
         <>
-            <div className="signin">
+            <section className="signin">
                 <div className="signin__container">
                     <Link to="/" className="signin__logo">
                         <img src={logo} alt="Логотип" />
@@ -61,7 +61,7 @@ export default function Login() {
                         </span>
                     </form>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

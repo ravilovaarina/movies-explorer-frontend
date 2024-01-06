@@ -17,7 +17,7 @@ export default function Register() {
 
     return (
         <>
-            <div className="signup">
+            <section className="signup">
                 <div className="signup__container">
                     <Link to="/" className="signup__logo">
                         <img src={logo} alt="Логотип" />
@@ -76,7 +76,7 @@ export default function Register() {
                         </span>
                     </form>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

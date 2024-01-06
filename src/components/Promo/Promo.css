@@ -60,6 +60,7 @@
     transition: all .1s ease;
     margin-top: 110px;
     background-color: transparent;
+    cursor: pointer;
     max-width: 129px;
 }
 

@@ -19,8 +19,8 @@ export default function Navigation({ loggedIn, onClickBurger, isBurgerOpened, th
             ) : (
                 <nav className={`navigation navigation_state_${isBurgerOpened ? 'opened' : 'closed'}`}>
                     <Hamburger isBurgerOpened={isBurgerOpened} onClickBurger={onClickBurger} />
-                    <ul className={`navigation__list navigation__list_loggedIn navigation__list_state_${isBurgerOpened ? 'opened' : 'closed'}`}>
-                        <div className="navigation__movies">
+                    <div className={`navigation__list navigation__list_loggedIn navigation__list_state_${isBurgerOpened ? 'opened' : 'closed'}`}>
+                        <ul className="navigation__movies">
                             {isBurgerOpened && (
                                 <li className="navigation__link-item">
                                     <NavLink exact to="/" className={({ isActive }) =>
@@ -45,8 +45,8 @@ export default function Navigation({ loggedIn, onClickBurger, isBurgerOpened, th
                                     Сохранённые фильмы
                                 </NavLink>
                             </li>
-                        </div>
-                        <div>
+                        </ul>
+                        <ul className="navigation__account">
                             <li className="navigation__link-item">
                                 <NavLink to="/profile" className={({ isActive }) =>
                                     isActive ?
@@ -55,8 +55,8 @@ export default function Navigation({ loggedIn, onClickBurger, isBurgerOpened, th
                                     Аккаунт
                                 </NavLink>
                             </li>
-                        </div>
-                    </ul>
+                        </ul>
+                    </div>
                 </nav>
             )}
         </>

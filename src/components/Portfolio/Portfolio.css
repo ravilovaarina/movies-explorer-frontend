@@ -107,7 +107,8 @@
     }
     .portfolio__link{
         font-size: 18px;
-        line-height: 28px
+        line-height: 28px;
+        letter-spacing: -0.72px;
     }
     .portfolio__link::after{
         width: 11px;
