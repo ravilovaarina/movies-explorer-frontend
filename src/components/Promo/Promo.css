@@ -1,0 +1,128 @@
+.promo {
+    background: #465DFF;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.promo__container {
+    max-width: 1280px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 75px 70px;
+    box-sizing: border-box;
+    align-items: flex-start;
+}
+
+.promo__about-project {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.promo__title {
+    margin: 0;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px;
+}
+
+.promo__caption {
+    margin: 0;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    opacity: 0.5;
+    max-width: 310px;
+}
+
+.promo__more {
+    padding: 9px 19px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, .6);
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    text-align: center;
+    transition: all .1s ease;
+    margin-top: 110px;
+    background-color: transparent;
+    cursor: pointer;
+    max-width: 129px;
+}
+
+.promo__more:hover {
+    opacity: 0.7;
+}
+
+.promo__logo {
+    width: 310px;
+    height: 304px;
+}
+
+@media screen and (max-width: 800px) {
+    .promo__container {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 48px;
+        padding: 140px 44px 76px;
+    }
+
+    .promo__title {
+        text-align: center;
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .promo__caption {
+        text-align: center;
+    }
+
+    .promo__about-project {
+        align-items: center;
+        gap: 22px;
+    }
+
+    .promo__more {
+        margin-top: 70px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .promo__container {
+        gap: 44px;
+        padding: 70px 10px 30px;
+    }
+
+    .promo__title {
+        font-size: 30px;
+        line-height: 38px;
+        letter-spacing: -1.2px;
+    }
+
+    .promo__about-project {
+        gap: 24px;
+    }
+
+    .promo__more {
+        margin-top: 56px;
+    }
+
+    .promo__logo {
+        width: 210.001px;
+        height: 206px;
+    }
+}

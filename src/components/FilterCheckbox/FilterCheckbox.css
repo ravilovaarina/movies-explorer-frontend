@@ -1,0 +1,51 @@
+.filter {
+    display: flex;
+    position: relative;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.filter__checkbox {
+    margin: 0;
+    width: 36px;
+    height: 20px;
+    appearance: none;
+    outline: none;
+    background-color: #EBEBEB;
+    border-radius: 10px;
+    transition: .5s;
+}
+
+.filter__checkbox:checked {
+    background-color: #2BE080;
+}
+
+.filter__tumbler {
+    position: absolute;
+    left: 4px;
+    top: 6px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    height: 8px;
+    width: 8px;
+    transition: .5s;
+    transform: scale(1.1);
+}
+
+.filter__checkbox:checked+.filter__tumbler {
+    left: 24px;
+}
+
+.filter__text {
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+@media screen and (max-width: 400px){
+    .filter__text{
+        font-size: 11px;
+    }
+}
