@@ -1,19 +1,15 @@
-function findMovies(movies, userQuery, checkedShort){
-    const moviesFound = movies.filter((movie) => {
+import { SHORT_MOVIE_DURATION } from "./constants";
+
+function findMovies(movies, userQuery){
+    return movies.filter((movie) => {
         const movieRU = String(movie.nameRU).toLowerCase().trim();
         const movieEN = String(movie.nameEN).toLowerCase().trim();
         const userMovie = userQuery.toLowerCase().trim();
         return movieRU.indexOf(userMovie) !== -1 || movieEN.indexOf(userMovie) !== -1;
     })
-
-    if (checkedShort){
-        return filterShortMovies(moviesFound)
-    } else {
-        return moviesFound
-    }
 };
 function filterShortMovies(moviesFound){
-    const shortMoviesFound = moviesFound.filter((movie) => movie.duration <= 40);
+    const shortMoviesFound = moviesFound.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
     return shortMoviesFound;
 };
 

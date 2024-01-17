@@ -94,10 +94,15 @@
     line-height: normal;
     border: none;
     transition: all .3s ease;
+    cursor: pointer;
+}
+
+.signin__submit_disabled {
+    background-color: #F8F8F8;
+    cursor: default;
 }
 
 .signin__submit:hover{
-    cursor: pointer;
     opacity: 0.8;
 }
 

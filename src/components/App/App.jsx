@@ -16,6 +16,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
   const [isInfoTooltip, setIsInfoTooltip] = useState({
     isOpen: false,
     text: '',
@@ -30,6 +31,7 @@ function App() {
   }
 
   function handleRegistration({ name, email, password }) {
+    setIsLoading(true)
     mainApi.register({ name, email, password })
       .then((data) => {
         if (data._id) {
@@ -43,9 +45,11 @@ function App() {
           text: err,
         })
       })
+      .finally(() => setIsLoading(false))
   }
 
   function handleAuthorization(data) {
+    setIsLoading(true)
     mainApi.authorize(data)
       .then(jwt => {
         if (jwt) {
@@ -61,15 +65,23 @@ function App() {
           text: err,
         })
       })
+      .finally(() => setIsLoading(false))
   }
 
   function handleProfile(data) {
+    setIsLoading(true)
     mainApi
       .updateProfile(data)
       .then((newUserData) => {
         setCurrentUser(newUserData);
+
+        setIsInfoTooltip({
+          isOpen: true,
+          text: 'Ваши данные обновлены!',
+        })
       })
       .catch(console.error)
+      .finally(() => setIsLoading(false))
   }
   //проверка токена и авторизация пользователя
   useEffect(() => {
@@ -145,7 +157,6 @@ function App() {
     navigate('/')
   }
 
-  console.log(isInfoTooltip)
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
@@ -191,16 +202,18 @@ function App() {
                 loggedIn={loggedIn}
                 onSignOut={handleSignOut}
                 handleProfile={handleProfile}
+                state={isInfoTooltip}
+                isLading={isLoading}
               />}
           />
           <Route
             path='/signup'
             exact
-            element={<Register state={isInfoTooltip} onSubmit={handleRegistration} />} />
+            element={<Register state={isInfoTooltip} onSubmit={handleRegistration} loggedIn={loggedIn} isLading={isLoading} />} />
           <Route
             path='/signin'
             exact
-            element={<Login onSubmit={handleAuthorization} />} />
+            element={<Login state={isInfoTooltip} onSubmit={handleAuthorization} loggedIn={loggedIn} isLading={isLoading} />} />
           <Route
             path='/*'
             element={<NotFound onGoBackClick={handleGoBackClick} />} />

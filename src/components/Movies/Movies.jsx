@@ -23,16 +23,6 @@ export default function Movies({ loggedIn, onClickSaveButton, onClickDeleteButto
         isOpen: false,
         text: '',
     })
-    //чекбокс
-    function handleShortMovies() {
-        setCheckedShort(!checkedShort);
-        if (!checkedShort) {
-            setSearchResult(filterShortMovies(moviesShown));
-        } else {
-            setSearchResult(moviesShown);
-        }
-        localStorage.setItem(`${currentUser.email} - checkedShort`, !checkedShort)
-    }
 
     // сабмит поиска
     function onSearchSubmit(userQuery) {
@@ -61,7 +51,7 @@ export default function Movies({ loggedIn, onClickSaveButton, onClickDeleteButto
 
     // поиск
     function handleSearch(movies, userQuery, checkedShort) {
-        const movieList = findMovies(movies, userQuery, checkedShort);
+        const movieList = findMovies(movies, userQuery);
         if (movieList.length === 0) {
             setIsInfoTooltip({
                 isOpen: true,
@@ -82,6 +72,18 @@ export default function Movies({ loggedIn, onClickSaveButton, onClickDeleteButto
         localStorage.setItem(`${currentUser.email} - movies`, JSON.stringify(movieList));
     }
 
+    //чекбокс
+    function handleShortMovies() {
+        setCheckedShort(!checkedShort);
+        if (!checkedShort) {
+            console.log(moviesShown)
+            setSearchResult(filterShortMovies(moviesShown));
+        } else {
+            setSearchResult(moviesShown);
+        }
+        localStorage.setItem(`${currentUser.email} - checkedShort`, !checkedShort)
+    }
+
     // чекбокс из локального хранилища
     useEffect(() => {
         if (localStorage.getItem(`${currentUser.email} - checkedShort`) === 'true') {
@@ -94,6 +96,7 @@ export default function Movies({ loggedIn, onClickSaveButton, onClickDeleteButto
     useEffect(() => {
         if (localStorage.getItem(`${currentUser.email} - movies`)) {
             const movies = JSON.parse(localStorage.getItem(`${currentUser.email} - movies`));
+            setMoviesShown(movies);
             if (localStorage.getItem(`${currentUser.email} - checkedShort`) === 'true') {
                 setSearchResult(filterShortMovies(movies));
             } else {

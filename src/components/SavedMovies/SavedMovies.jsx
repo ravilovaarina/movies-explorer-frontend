@@ -15,7 +15,7 @@ export default function SavedMovies({ savedMovies, loggedIn, onClickSaveButton, 
     const [checkedShort, setCheckedShort] = useState(false);
     const [noResult, setNoResult] = useState(false);
     const [searchResult, setSearchResult] = useState(savedMovies);
-    const [moviesShown, setMoviesShown] = useState(savedMovies);
+    const [moviesShown, setMoviesShown] = useState(searchResult);
     const [isInfoTooltip, setIsInfoTooltip] = useState({
         isOpen: false,
         successful: null,
@@ -38,11 +38,13 @@ export default function SavedMovies({ savedMovies, loggedIn, onClickSaveButton, 
     }
 
     function handleShortMovies() {
-        setCheckedShort(!checkedShort);
         if (!checkedShort) {
+            setCheckedShort(true);
             localStorage.setItem(`${currentUser.email} - checkedShortSavedMovies`, true);
             setSearchResult(filterShortMovies(moviesShown));
+            filterShortMovies(moviesShown).length === 0 ? setNoResult(true) : setNoResult(false);
         } else {
+            setCheckedShort(false);
             localStorage.setItem(`${currentUser.email} - checkedShortSavedMovies`, false);
             moviesShown.length === 0 ? setNoResult(true) : setNoResult(false);
             setSearchResult(moviesShown);
@@ -51,17 +53,19 @@ export default function SavedMovies({ savedMovies, loggedIn, onClickSaveButton, 
     }
 
     useEffect(()=>{
-        if(localStorage.getItem(`${currentUser.email} - checkedShortSavedMovies`, true)){
+        if((localStorage.getItem(`${currentUser.email} - checkedShortSavedMovies`)) === 'true'){
             setCheckedShort(true);
             setSearchResult(filterShortMovies(savedMovies));
         } else {
-            searchResult.length === 0 ? setNoResult(true) : setNoResult(false);
             setCheckedShort(false);
             setSearchResult(savedMovies);
         }
-    },[]);
+    },[savedMovies, currentUser]);
 
-
+    useEffect(()=>{
+        setMoviesShown(savedMovies);
+        savedMovies.length !== 0 ? setNoResult(false) : setNoResult(true);
+    }, [savedMovies]);
 
 
     return (

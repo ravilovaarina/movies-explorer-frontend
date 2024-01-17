@@ -1,7 +1,7 @@
-import { apiConfig } from "./constants"
+import { API_CONFIG } from "./constants"
 class MoviesApi {
-    constructor(apiConfig) {
-        this._url = apiConfig.BeatFilmUrl;
+    constructor(API_CONFIG) {
+        this._url = API_CONFIG.BeatFilmUrl;
     }
 
     _checkResponse(res) {
@@ -19,5 +19,5 @@ class MoviesApi {
     }
 }
 
-const moviesApi = new MoviesApi(apiConfig);
+const moviesApi = new MoviesApi(API_CONFIG);
 export { moviesApi }

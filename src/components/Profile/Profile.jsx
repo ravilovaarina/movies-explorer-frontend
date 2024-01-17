@@ -4,12 +4,28 @@ import Header from "../Header/Header";
 import './Profile.css'
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import InfoToolTip from "../InfoToolTip/InfoToolTip";
 
-export default function Profile({ loggedIn, onSignOut, handleProfile }) {
+export default function Profile({ loggedIn, onSignOut, handleProfile, state }) {
     const [isBeingEdited, setIsBeingEdited] = useState(false);
     const { isValid, values, errors, resetForm, handleChange } = useFormValidator();
     const navigate = useNavigate();
     const currentUser = useContext(CurrentUserContext);
+    const [infoToolTipState, setInfoToolTipState] = useState({
+        isOpen: false,
+        text: '',
+      })
+      
+      useEffect(()=>{
+        setInfoToolTipState(state)
+      }, [state]);
+
+      useEffect(()=>{
+        setInfoToolTipState({
+            isOpen: false,
+            text: '',
+          })
+      }, []);
 
     function handleEditClick() {
         setIsBeingEdited(!isBeingEdited);
@@ -25,8 +41,7 @@ export default function Profile({ loggedIn, onSignOut, handleProfile }) {
         }
     }, [resetForm])
 
-    const isFullyValid = (!isValid || !(currentUser.name === values.name && currentUser.email === values.email));
-    
+    const isFullyValid = (isValid && !(currentUser.name === values.name && currentUser.email === values.email));
     return (
         <>
             <Header themePurple={false} loggedIn={loggedIn}/>
@@ -66,9 +81,10 @@ export default function Profile({ loggedIn, onSignOut, handleProfile }) {
                             <span className="profile__error">{errors.email || ''}</span>
                         </label>
                     </div>
+                    <InfoToolTip state={infoToolTipState} />
                     <button className={`
                         ${isBeingEdited ? 'profile__save-bttn profile__save-bttn_shown' : 'profile__save-bttn profile__save-bttn_hidden'}
-                        ${isValid ? 'profile__save-bttn profile__save-bttn_valid' : 'profile__save-bttn profile__save-bttn_invalid'}`}
+                        ${isFullyValid ? 'profile__save-bttn profile__save-bttn_valid' : 'profile__save-bttn profile__save-bttn_invalid'}`}
                         disabled={isFullyValid ? false : true}
                     >Сохранить
                     </button>
@@ -77,7 +93,6 @@ export default function Profile({ loggedIn, onSignOut, handleProfile }) {
                     <button type="submit"
                         className={`profile__button profile__button-edit ${!isValid && 'profile__button-edit_disabled'
                             }`}
-                        disabled={!isValid}
                         onClick={handleEditClick}
                     >Редактировать
                     </button>

@@ -31,7 +31,9 @@ export default function MoviesCard({ card, onClickSaveButton, onClickDeleteButto
                         <button onClick={handleDeleteCard} className="card__save-button card__save-button_type_unsave"></button>
                     )}
                 </div>
+                <a target="_blank" rel="noreferrer" href={card.trailerLink}>
                 <img src={location.pathname === '/movies' ? `https://api.nomoreparties.co/${card.image.url}` : card.image} alt="Постер фильма" className="card__image" />
+                </a>
             </div>
         </li>
     )

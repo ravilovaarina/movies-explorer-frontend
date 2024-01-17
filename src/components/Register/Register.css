@@ -94,10 +94,15 @@
     line-height: normal;
     border: none;
     transition: all .3s ease;
+    cursor: pointer;
 }
 
-.signup__submit:hover{
-    cursor: pointer;
+.signup__submit_disabled {
+    background-color: #F8F8F8;
+    cursor: default;
+}
+
+.signup__submit:hover {
     opacity: 0.8;
 }
 
@@ -125,7 +130,7 @@
     transition: all .3s ease;
 }
 
-.signup__link:hover{
+.signup__link:hover {
     opacity: 0.7;
 }
 
@@ -139,7 +144,7 @@
         margin: 0;
     }
 
-    .signup__text{
+    .signup__text {
         margin-top: -4px;
     }
 }
@@ -167,11 +172,11 @@
         margin-top: 159px;
     }
 
-    .signup__text{
+    .signup__text {
         font-size: 12px;
     }
 
-    .signup__link{
+    .signup__link {
         font-size: 12px;
     }
 }

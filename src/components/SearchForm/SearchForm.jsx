@@ -3,11 +3,14 @@ import './SearchForm.css'
 import useFormValidator from "../../hooks/ValidateForm";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 export default function SearchForm({onSearchSubmit, checkedShort, handleShortMovies}) {
-    const { isValid, values, resetForm, handleChange } = useFormValidator();
-    const [queryError, setQueryError] = useState('')
-    const location = useLocation()
+    const { isValid, values, resetForm, handleChange, setIsValid } = useFormValidator();
+    const [queryError, setQueryError] = useState('');
+    const location = useLocation();
+    const currentUser = useContext(CurrentUserContext)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -16,7 +19,15 @@ export default function SearchForm({onSearchSubmit, checkedShort, handleShortMov
 
     useEffect(() => {
         setQueryError('')
-    }, [isValid])
+    }, [isValid]);
+
+    useEffect(() => {
+        if (localStorage.getItem(`${currentUser.email} - userQuery`) && location.pathname === '/movies'){
+            const searchValue = localStorage.getItem(`${currentUser.email} - userQuery`);
+            values.search = searchValue;
+            setIsValid(true)
+        }
+    }, [currentUser])
     return (
         <>
             <section className="search">

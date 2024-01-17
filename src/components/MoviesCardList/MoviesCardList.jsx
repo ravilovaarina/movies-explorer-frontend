@@ -2,26 +2,17 @@ import { useCallback, useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { useLocation } from "react-router-dom";
 import './MoviesCardList.css'
-import { deviceWidth } from "../../utils/constants";
+import { DEVICE_WIDTH } from "../../utils/constants";
 import { getSavedMovies } from "../../utils/utils";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import useScreenWidth from "../../hooks/useScreenWidth";
 
 export default function MoviesCardList({ movies, onClickSaveButton, onClickDeleteButton, savedMovies }) {
     const location = useLocation();
-    const [screenWidth, setScreenWidth] = useState(
-        document.documentElement.clientWidth
-    );
     const [movieList, setMovieList] = useState([]);
-    const { desktop, tablet, mobile } = deviceWidth;
+    const { desktop, tablet, mobile } = DEVICE_WIDTH;
     const [movieListState, setMovieListState] = useState(desktop.cards);
-
-    const handleResizing = useCallback(() => {
-        setScreenWidth(document.documentElement.clientWidth)
-    }, [setScreenWidth])
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResizing);
-    }, [handleResizing])
+    const screenWidth = useScreenWidth();
 
     useEffect(() => {
         if (location.pathname === '/movies') {
@@ -50,7 +41,7 @@ export default function MoviesCardList({ movies, onClickSaveButton, onClickDelet
             setMovieList([...movieList, ...newList]);
         }
     }
-    
+
     return (
         <section className="movieslist">
             <ul className="movieslist__list">

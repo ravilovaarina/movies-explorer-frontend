@@ -1,7 +1,7 @@
-import { apiConfig } from "./constants";
+import { API_CONFIG } from "./constants";
 class MainApi {
-  constructor(apiConfig) {
-    this._url = apiConfig.myUrl
+  constructor(API_CONFIG) {
+    this._url = API_CONFIG.myUrl
   }
 
   _checkResponse(res) {
@@ -114,5 +114,5 @@ class MainApi {
   }
 }
 
-const mainApi = new MainApi(apiConfig)
+const mainApi = new MainApi(API_CONFIG)
 export { mainApi }
