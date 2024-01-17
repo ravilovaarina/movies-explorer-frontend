@@ -1,32 +1,37 @@
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import './MoviesCard.css'
-export default function MoviesCard({ card }) {
+export default function MoviesCard({ card, onClickSaveButton, onClickDeleteButton, isCardSaved  }) {
     const location = useLocation()
-
-    const [isCardSaved, setIsCardSaved] = useState(false)
+    const hours = Math.floor(card.duration / 60)
+    const minutes = card.duration % 60
 
     const handleOnClick = () => {
-        setIsCardSaved(!isCardSaved)
+        onClickSaveButton(card);
+
     }
+    const handleDeleteCard = () => {
+        onClickDeleteButton(card);
+    }
+
     return (
         <li className="card">
             <div className="card__container">
                 <div className="card__description">
-                    <h2 className="card__title">{card.title}</h2>
-                    <p className="card__caption">{card.duration}</p>
+                    <h2 className="card__title">{card.nameRU}</h2>
+                    <p className="card__caption">{`${hours} часов ${minutes} минут`}</p>
                     {location.pathname === "/movies" && (
                         <button
-                        type='button'
-                        className={`card__save-button card__save-button_type_${!isCardSaved ? 'save' : 'saved'}`}
-                        onClick={handleOnClick}
+                            type='button'
+                            className={`card__save-button card__save-button_type_${!isCardSaved ? 'save' : 'saved'}`}
+                            onClick={!isCardSaved ? handleOnClick : handleDeleteCard}
                         ></button>
                     )}
                     {location.pathname === "/saved-movies" && (
-                        <button className="card__save-button card__save-button_type_unsave"></button>
+                        <button onClick={handleDeleteCard} className="card__save-button card__save-button_type_unsave"></button>
                     )}
                 </div>
-                <img src={card.poster} alt="Постер фильма" className="card__image" />
+                <img src={location.pathname === '/movies' ? `https://api.nomoreparties.co/${card.image.url}` : card.image} alt="Постер фильма" className="card__image" />
             </div>
         </li>
     )

@@ -1,0 +1,13 @@
+.tooltip{
+    color: #FF6838;
+    display: flex;
+    justify-content: center;
+    margin: 70px 0 0 20px;
+}
+
+.tooltip__text{
+    margin: 0;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+}

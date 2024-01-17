@@ -3,12 +3,18 @@ import { useEffect } from 'react';
 import './Register.css'
 import { Link } from 'react-router-dom';
 import useFormValidator from '../../hooks/ValidateForm';
+import InfoToolTip from '../InfoToolTip/InfoToolTip';
 
-export default function Register() {
-    const { isValid, values, errors, resetForm, handleChange } = useFormValidator();
-
+export default function Register({onSubmit,state }) {
+    const { isValid, values, errors, resetForm, handleChange} = useFormValidator();
+ 
     function handleSubmit(e) {
         e.preventDefault();
+        onSubmit({
+            name: values.name,
+            email: values.email,
+            password: values.password,
+        });
     }
 
     useEffect(() => {
@@ -65,6 +71,7 @@ export default function Register() {
                             />
                             <span className="signup__error">{errors.password || ' '}</span>
                         </label>
+                        <InfoToolTip state={state} />
                         <button
                             type='submit'
                             className="signup__submit"

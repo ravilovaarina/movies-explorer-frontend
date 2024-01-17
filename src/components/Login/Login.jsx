@@ -4,11 +4,15 @@ import './Login.css'
 import { Link } from 'react-router-dom';
 import useFormValidator from '../../hooks/ValidateForm';
 
-export default function Login() {
+export default function Login({onSubmit}) {
     const { isValid, values, errors, resetForm, handleChange } = useFormValidator();
 
     function handleSubmit(e) {
         e.preventDefault();
+        onSubmit({
+            email: values.email,
+            password: values.password,
+        })
     }
 
     useEffect(() => {

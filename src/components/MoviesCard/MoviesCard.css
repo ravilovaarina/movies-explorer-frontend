@@ -71,7 +71,7 @@
 }
 
 .card__save-button_type_unsave{
-    background-image: url('../../images/save-icon.svg');
+    background-image: url('../../images/unsave-icon.svg');
 }
 
 @media screen and (max-width: 800px) {

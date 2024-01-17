@@ -1,34 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import useFormValidator from "../../hooks/ValidateForm";
 import Header from "../Header/Header";
 import './Profile.css'
 import { useNavigate } from "react-router-dom";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-export default function Profile({ isBurgerOpened, loggedIn, onClickBurger }) {
+export default function Profile({ loggedIn, onSignOut, handleProfile }) {
     const [isBeingEdited, setIsBeingEdited] = useState(false);
     const { isValid, values, errors, resetForm, handleChange } = useFormValidator();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const currentUser = useContext(CurrentUserContext);
+
     function handleEditClick() {
         setIsBeingEdited(!isBeingEdited);
-        console.log(isBeingEdited)
     }
     function handleSubmit(e) {
         e.preventDefault();
+        handleProfile(values);
         setIsBeingEdited(!isBeingEdited);
     }
-    function handleSignOutClick() {
-        navigate("/", { replace: true });
-    }
     useEffect(() => {
-        resetForm();
+        if (currentUser){
+            resetForm(true, currentUser, {})
+        }
     }, [resetForm])
+
+    const isFullyValid = (!isValid || !(currentUser.name === values.name && currentUser.email === values.email));
+    
     return (
         <>
-            <Header themePurple={false} loggedIn={loggedIn} isBurgerOpened={isBurgerOpened} onClickBurger={onClickBurger} />
+            <Header themePurple={false} loggedIn={loggedIn}/>
             <main className="main">
                 <section className="profile">
                 <form className="profile__form" name="profile" noValidate onSubmit={handleSubmit}>
-                    <h1 className="profile__greeting">Привет, Виталий!</h1>
+                    <h1 className="profile__greeting">{`Привет, ${currentUser.name || ''}!`}</h1>
                     <div className="profile__inputs">
                         <label className="profile__lable">
                             <span className="profile__input-text">Имя</span>
@@ -39,7 +44,7 @@ export default function Profile({ isBurgerOpened, loggedIn, onClickBurger }) {
                                 placeholder="Имя"
                                 required
                                 onChange={handleChange}
-                                value={values.name || 'Виталя'}
+                                value={values.name || ''}
                                 minLength='2'
                                 maxLength='30'
                                 disabled={isBeingEdited ? false : true}
@@ -55,7 +60,7 @@ export default function Profile({ isBurgerOpened, loggedIn, onClickBurger }) {
                                 placeholder="Почта"
                                 required
                                 onChange={handleChange}
-                                value={values.email || 'vitlyaTheGreatest@GOAT.com'}
+                                value={values.email || ''}
                                 disabled={isBeingEdited ? false : true}
                             />
                             <span className="profile__error">{errors.email || ''}</span>
@@ -64,7 +69,7 @@ export default function Profile({ isBurgerOpened, loggedIn, onClickBurger }) {
                     <button className={`
                         ${isBeingEdited ? 'profile__save-bttn profile__save-bttn_shown' : 'profile__save-bttn profile__save-bttn_hidden'}
                         ${isValid ? 'profile__save-bttn profile__save-bttn_valid' : 'profile__save-bttn profile__save-bttn_invalid'}`}
-                        disabled={isValid ? false : true}
+                        disabled={isFullyValid ? false : true}
                     >Сохранить
                     </button>
                 </form>
@@ -76,7 +81,7 @@ export default function Profile({ isBurgerOpened, loggedIn, onClickBurger }) {
                         onClick={handleEditClick}
                     >Редактировать
                     </button>
-                    <button type="button" className="profile__button profile__button-signout" onClick={handleSignOutClick}>Выйти из аккаунта</button>
+                    <button type="button" className="profile__button profile__button-signout" onClick={onSignOut}>Выйти из аккаунта</button>
                 </div>
                 </section>
             </main>
