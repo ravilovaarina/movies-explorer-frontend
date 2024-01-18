@@ -23,6 +23,7 @@ export default function SavedMovies({ savedMovies, loggedIn, onClickSaveButton, 
     });
 
     function handleSearchInSavedMovies(userQuery) {
+        localStorage.setItem(`${currentUser.email} - userQuerySavedMovies`, userQuery);
         const savedMovieList = findMovies(savedMovies, userQuery, checkedShort);
         if (savedMovieList.length === 0) {
             setIsInfoTooltip({
@@ -65,6 +66,20 @@ export default function SavedMovies({ savedMovies, loggedIn, onClickSaveButton, 
     useEffect(()=>{
         setMoviesShown(savedMovies);
         savedMovies.length !== 0 ? setNoResult(false) : setNoResult(true);
+        if (localStorage.getItem(`${currentUser.email} - userQuerySavedMovies`)){
+            const query = localStorage.getItem(`${currentUser.email} - userQuerySavedMovies`);
+            handleSearchInSavedMovies(query)
+            if(noResult){
+                localStorage.setItem(`${currentUser.email} - userQuerySavedMovies`, '')
+                setNoResult(false)
+                setIsInfoTooltip({
+                    isOpen: false,
+                    text: '',
+                });
+                setSearchResult(savedMovies)
+                console.log(searchResult)
+            }
+        }
     }, [savedMovies]);
 
 
