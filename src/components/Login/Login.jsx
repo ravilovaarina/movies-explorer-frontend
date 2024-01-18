@@ -1,19 +1,45 @@
 import logo from '../../images/logo.svg';
 import { useEffect } from 'react';
 import './Login.css'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import useFormValidator from '../../hooks/ValidateForm';
+import InfoToolTip from '../InfoToolTip/InfoToolTip';
+import { useState } from 'react';
 
-export default function Login() {
+export default function Login({ onSubmit, loggedIn, state, isLoading }) {
+    const [infoToolTipState, setInfoToolTipState] = useState({
+        isOpen: false,
+        text: '',
+      })
+      
+      useEffect(()=>{
+        setInfoToolTipState(state)
+      }, [state]);
+
+      useEffect(()=>{
+        setInfoToolTipState({
+            isOpen: false,
+            text: '',
+          })
+      }, []);
+
     const { isValid, values, errors, resetForm, handleChange } = useFormValidator();
 
     function handleSubmit(e) {
         e.preventDefault();
+        onSubmit({
+            email: values.email,
+            password: values.password,
+        })
     }
 
     useEffect(() => {
         resetForm();
     }, [resetForm])
+
+    if (loggedIn) {
+        return <Navigate to='/movies' replace />;
+    }
 
     return (
         <>
@@ -34,6 +60,7 @@ export default function Login() {
                                 value={values.email || ''}
                                 placeholder='Почта'
                                 required
+                                disabled={isLoading}
                             />
                             <span className="signin__error">{errors.email || ''}</span>
                         </label>
@@ -47,12 +74,14 @@ export default function Login() {
                                 value={values.password || ''}
                                 placeholder='Пароль'
                                 required
+                                disabled={isLoading}
                             />
                             <span className="signin__error">{errors.password || ''}</span>
                         </label>
+                        <InfoToolTip state={infoToolTipState} />
                         <button
                             type='submit'
-                            className="signin__submit"
+                            className={!isValid ? "signin__submit signin__submit_disabled" : "signin__submit"}
                             disabled={!isValid}
                         >Войти</button>
                         <span className="signin__text">

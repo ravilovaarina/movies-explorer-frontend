@@ -1,19 +1,46 @@
 import logo from '../../images/logo.svg';
 import { useEffect } from 'react';
 import './Register.css'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import useFormValidator from '../../hooks/ValidateForm';
+import InfoToolTip from '../InfoToolTip/InfoToolTip';
+import { useState } from 'react';
 
-export default function Register() {
+export default function Register({ onSubmit, state, loggedIn }) {
+    const [infoToolTipState, setInfoToolTipState] = useState({
+        isOpen: false,
+        text: '',
+      })
+
+      useEffect(()=>{
+        setInfoToolTipState(state)
+      }, [state]);
+
+      useEffect(()=>{
+        setInfoToolTipState({
+            isOpen: false,
+            text: '',
+          })
+      }, []);
+
     const { isValid, values, errors, resetForm, handleChange } = useFormValidator();
 
     function handleSubmit(e) {
         e.preventDefault();
+        onSubmit({
+            name: values.name,
+            email: values.email,
+            password: values.password,
+        });
     }
 
     useEffect(() => {
         resetForm();
-    }, [resetForm])
+    }, [resetForm]);
+
+    if (loggedIn) {
+        return <Navigate to='/movies' replace />;
+    }
 
     return (
         <>
@@ -65,9 +92,10 @@ export default function Register() {
                             />
                             <span className="signup__error">{errors.password || ' '}</span>
                         </label>
+                        <InfoToolTip state={infoToolTipState} />
                         <button
                             type='submit'
-                            className="signup__submit"
+                            className={!isValid ? "signup__submit signup__submit_disabled" : "signup__submit"}
                             disabled={!isValid}
                         >Зарегистрироваться</button>
                         <span className="signup__text">

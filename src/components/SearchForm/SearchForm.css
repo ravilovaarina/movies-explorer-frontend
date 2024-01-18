@@ -48,6 +48,20 @@
     margin-bottom: 29px;
 }
 
+.search__error {
+    display: block;
+    min-height: 12px;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 61px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+    color: red;
+    border-bottom: 1px solid var(--block-border-grey-opacity);
+  }  
+
 .search__button {
     background-image: url('../../images/find-icon.svg');
     background-repeat: no-repeat;
